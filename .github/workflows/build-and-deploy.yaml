@@ -66,4 +66,4 @@ jobs:
     - name: Deploy on GKE
       run: |
         kubectl apply -f ./kubernetes/
-        kubectl rollout restart deployment/book-mgmt-api-deploy
+        kubectl rollout restart ./kubernetes/book-mgmt-api-deploy
