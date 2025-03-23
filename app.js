@@ -27,7 +27,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  return res.send('Hello World !!!');
+  return res.send('book-management-api is running on port =5000 !!!');
 });
 
 app.use('/book', booksRouter);
