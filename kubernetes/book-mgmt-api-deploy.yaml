@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: book-management-api-image
-          image: arun0kb/book-management-api
+          image: arun0kb/book-management-api:DOCKER_IMG_TAG
           imagePullPolicy: Always
           env:
           - name: MYSQL_PASSWORD
