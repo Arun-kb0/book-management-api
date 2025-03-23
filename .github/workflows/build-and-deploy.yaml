@@ -58,7 +58,12 @@ jobs:
         cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
         location: ${{ secrets.GKE_CLUSTER_ZONE }}
 
-    - name: Deploy on the GKE
-      run: |-
-        sed -i -e 's/DOCKER_IMG_TAG/'${{ github.sha }}'/' ./kubernetes/book-mgmt-api-deploy.yaml
+    - name: Update Deployment YAML
+      run: |
+        sed -i "s/DOCKER_IMG_TAG/${{ github.sha }}/g" ./kubernetes/book-mgmt-api-deploy.yaml
+        cat ./kubernetes/book-mgmt-api-deploy.yaml
+
+    - name: Deploy on GKE
+      run: |
         kubectl apply -f ./kubernetes/
+        kubectl rollout restart deployment/book-mgmt-api-deploy
